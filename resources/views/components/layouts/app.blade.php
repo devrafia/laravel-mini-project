@@ -12,7 +12,7 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    @livewireStyles
 </head>
 
 <body class="h-full">
@@ -76,7 +76,6 @@
         </nav>
 
         <!-- Sidebar -->
-
         <aside
             class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full bg-white border-r border-gray-200 pt-14 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
             aria-label="Sidenav" id="drawer-navigation">
@@ -245,30 +244,12 @@
             </div>
         </aside>
 
-        {{-- <main class="h-auto p-4 pt-20 md:ml-64">
-            <div class="grid grid-cols-1 gap-4 mb-4 sm:grid-cols-2 lg:grid-cols-4">
-                <div class="h-32 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 md:h-64"></div>
-                <div class="h-32 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 md:h-64"></div>
-                <div class="h-32 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 md:h-64"></div>
-                <div class="h-32 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 md:h-64"></div>
-            </div>
-            <div class="mb-4 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 h-96"></div>
-            <div class="grid grid-cols-2 gap-4 mb-4">
-                <div class="h-48 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 md:h-72"></div>
-                <div class="h-48 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 md:h-72"></div>
-                <div class="h-48 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 md:h-72"></div>
-                <div class="h-48 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 md:h-72"></div>
-            </div>
-            <div class="mb-4 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 h-96"></div>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="h-48 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 md:h-72"></div>
-                <div class="h-48 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 md:h-72"></div>
-                <div class="h-48 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 md:h-72"></div>
-                <div class="h-48 border-2 border-gray-300 border-dashed rounded-lg dark:border-gray-600 md:h-72"></div>
-            </div>
-        </main> --}}
-        {{ $slot }}
+        <main class="h-auto p-4 pt-20 min-h-[100vh] md:ml-64">
+            <h1 class="text-5xl font-bold">{{ $title }}</h1>
+            {{ $slot }}
+        </main>
     </div>
+    @livewireScripts
 </body>
 
 </html>
