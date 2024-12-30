@@ -2,9 +2,9 @@
     <x-slot name="title">Kelola Buku</x-slot>
     <div class="mt-4">
         <div>
-            <button
-                class="block p-2 mb-3 ml-auto text-white rounded-md bg-slate-600 hover:bg-slate-700 active:bg-slate-800">Tambah
-                Buku</button>
+            <a href="{{ route('books.create') }}"
+                class="block p-2 mb-3 ml-auto text-white rounded-md w-max bg-slate-600 hover:bg-slate-700 active:bg-slate-800">Tambah
+                Buku</a>
         </div>
         <div class="relative overflow-x-auto sm:rounded-lg">
             <div class="flex flex-wrap items-center justify-between pb-4 space-y-4 flex-column sm:flex-row sm:space-y-0">
@@ -139,13 +139,13 @@
                                 {{ $book->title }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $book->author }}
+                                {{ $book->category->name }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $book->author }}
+                                {{ $book->author->name }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $book->author }}
+                                {{ $book->publisher->name }}
                             </td>
                             <td class="px-6 py-4">
                                 <a href="#"
