@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookRequest;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Category;
@@ -27,5 +28,17 @@ class BookController extends Controller
             'authors' => $authors,
             'publishers' => $publishers,
         ]);
+    }
+
+    public function store(BookRequest $request)
+    {
+        $file = $request->file('cover_image');
+
+        Book::create([
+            ...$request->validated(),
+            'cover_image' => $file->store('images/cover', 'public')
+        ]);
+
+        return to_route('books.index');
     }
 }

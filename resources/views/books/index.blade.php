@@ -119,6 +119,9 @@
                             Penerbit
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Cover
+                        </th>
+                        <th scope="col" class="px-6 py-3">
 
                         </th>
                     </tr>
@@ -146,6 +149,10 @@
                             </td>
                             <td class="px-6 py-4">
                                 {{ $book->publisher->name }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <img src="{{ asset('storage/' . $book->cover_image) }}" alt="Cover Image"
+                                    class="object-cover w-20 h-20">
                             </td>
                             <td class="px-6 py-4">
                                 <a href="#"
