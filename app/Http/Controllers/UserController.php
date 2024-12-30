@@ -11,9 +11,15 @@ class UserController extends Controller
     public function create(UserRequest $request)
     {
         // dd($request->all());
+
         $validated = $request->all();
         User::create($validated);
 
         return view('login', ['message' => 'Pendaftaran Berhasil']);
+    }
+
+    public function dashboard()
+    {
+        return view('dashboard');
     }
 }

@@ -12,3 +12,5 @@ Route::get('/register', function () {
 });
 Route::post('/register', [UserController::class, 'create'])->name('user.create');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('user.login');
+
+Route::get('/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
