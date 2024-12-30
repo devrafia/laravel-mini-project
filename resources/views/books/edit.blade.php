@@ -2,10 +2,14 @@
     <x-slot name="title">Edit Buku</x-slot>
     <div class="mt-4">
         <div class="relative overflow-x-auto sm:rounded-lg">
-
-
-            <form class="max-w-sm" action="{{ route('books.update', $book) }}" method="POST" enctype="multipart/form-data"
-                novalidate>
+            <form action={{ route('books.destroy', $book) }} method="post" class="block w-1/3 mt-2">
+                @method('DELETE')
+                @csrf
+                <button type="submit" class="block p-2 ml-auto text-white bg-red-500 rounded-md" type="submit">Hapus
+                    Buku</button>
+            </form>
+            <form class="max-w-sm" action="{{ route('books.update', $book) }}" method="POST"
+                enctype="multipart/form-data" novalidate>
                 @csrf
                 @method('PUT')
                 <div class="mb-5">

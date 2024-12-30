@@ -74,4 +74,15 @@ class BookController extends Controller
 
         return to_route('books.index');
     }
+
+    public function destroy(Book $book)
+    {
+        if ($book->cover_image) {
+            Storage::disk('public')->delete($book->cover_image);
+        }
+        // Hapus data buku
+        $book->delete();
+
+        return response()->json(['message' => 'Buku berhasil dihapus!']);
+    }
 }

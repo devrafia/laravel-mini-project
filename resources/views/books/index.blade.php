@@ -157,12 +157,41 @@
                             <td class="px-6 py-4">
                                 <a href="{{ route('books.edit', $book) }}"
                                     class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                <button class="delete-book" data-id="{{ $book->id }}">Hapus</button>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-
     </div>
+    <x-slot name="scripts">
+        <script>
+            document.querySelectorAll('.delete-book').forEach(button => {
+                button.addEventListener('click', function() {
+                    const bookId = this.getAttribute('data-id');
+                    const confirmation = confirm('Apakah Anda yakin ingin menghapus buku ini?');
+                    if (confirmation) {
+                        fetch(`/books/${bookId}`, {
+                                method: 'DELETE',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                }
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                alert(data.message);
+                                // Hapus baris buku dari tabel
+                                this.closest('tr').remove();
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                alert('Terjadi kesalahan saat menghapus buku.');
+                            });
+                    }
+                });
+            });
+        </script>
+    </x-slot>
 </x-layouts.app>
