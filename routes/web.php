@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,8 +10,8 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return view('register');
 });
-Route::post('/register', [UserController::class, 'create'])->name('user.create');
-Route::post('/login', [LoginController::class, 'authenticate'])->name('user.login');
+Route::post('/register', [Controllers\UserController::class, 'create'])->name('user.create');
+Route::post('/login', [Controllers\LoginController::class, 'authenticate'])->name('user.login');
 
-Route::get('/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
-Route::get('/books', [UserController::class, 'dashboard'])->name('user.dashboard');
+Route::get('/dashboard', [Controllers\UserController::class, 'dashboard'])->name('user.dashboard');
+Route::resource('books', Controllers\BookController::class);

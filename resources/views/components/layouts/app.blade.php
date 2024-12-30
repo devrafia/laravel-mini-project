@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title> laravel</title>
+    <title>{{ $title }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -82,7 +82,7 @@
             <div class="h-full px-3 py-5 overflow-y-auto bg-white dark:bg-gray-800">
                 <ul class="space-y-2">
                     <li>
-                        <a href="#"
+                        <a href="{{ route('books.index') }}"
                             class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg aria-hidden="true"
                                 class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -244,7 +244,7 @@
             </div>
         </aside>
 
-        <main class="h-auto p-4 pt-20 min-h-[100vh] md:ml-64">
+        <main class="h-auto p-4 px-10 pt-20 min-h-[100vh] md:ml-64">
             <h1 class="text-5xl font-bold">{{ $title }}</h1>
             {{ $slot }}
         </main>
