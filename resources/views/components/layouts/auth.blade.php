@@ -19,8 +19,8 @@
     <div class="flex flex-col justify-center min-h-full px-6 py-12 lg:px-8">
         <div class="mx-auto w-[30rem] bg-slate-300 rounded-md py-7 shadow-lg">
             <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-                <img class="w-auto h-10 mx-auto"
-                    src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+                <img class="w-auto h-20 mx-auto" src="https://pngimg.com/uploads/book/book_PNG2116.png"
+                    alt="Your Company">
 
                 <h2 class="mt-10 font-bold tracking-tight text-center text-gray-900 text-2xl/9">{{ $header }}</h2>
             </div>

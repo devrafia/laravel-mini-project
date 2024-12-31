@@ -39,7 +39,8 @@
                         <span class="sr-only">Toggle sidebar</span>
                     </button>
                     <a href="{{ route('user.dashboard') }}" class="flex items-center justify-between mr-4">
-                        <img src="https://flowbite.s3.amazonaws.com/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
+                        <img src="https://pngimg.com/uploads/book/book_PNG2116.png" class="h-8 mr-3"
+                            alt="Flowbite Logo" />
                         <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">E-Book</span>
                     </a>
 
