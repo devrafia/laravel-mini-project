@@ -15,9 +15,8 @@ class BookController extends Controller
 {
     public function index()
     {
-        $books = Book::get();
-
-        return view('books.index', ['books' => $books]);
+        // $books = Book::get();
+        return view('books.index');
     }
 
     public function create()
@@ -102,11 +101,13 @@ class BookController extends Controller
     public function list()
     {
         if (auth()->user()->isAdmin()) {
-            $books = Book::latest()->paginate(9);
+            $books = Book::with(['author', 'publisher', 'category'])
+                ->latest()->paginate(9);
         } else {
-            $books = Book::whereHas('author', function ($query) {
-                $query->where('name', auth()->user()->name);
-            })->latest()->paginate(9);
+            $books = Book::with(['author', 'publisher', 'category'])
+                ->whereHas('author', function ($query) {
+                    $query->where('name', auth()->user()->name);
+                })->latest()->paginate(9);
         }
         return view('books.list', ['books' => $books]);
     }

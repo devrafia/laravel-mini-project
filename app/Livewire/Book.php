@@ -17,7 +17,8 @@ class Book extends Component
 
     public function render()
     {
-        $books = ModelsBook::latest()
+        $books = ModelsBook::with(['author', 'publisher', 'category'])
+            ->latest()
             ->when($this->category, function ($query) {
                 return $query->where('category_id', $this->category);
             })
