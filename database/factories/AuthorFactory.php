@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Author>
@@ -22,7 +23,7 @@ class AuthorFactory extends Factory
         User::create([
             'name' => $name,
             'email' => $this->faker->unique()->safeEmail,
-            'password' => bcrypt('password'),
+            'password' => Hash::make('password'),
             'role' => 'penulis',
         ]);
 
