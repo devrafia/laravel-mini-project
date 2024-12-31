@@ -12,6 +12,7 @@ Route::get('/register', function () {
 });
 Route::post('/register', [Controllers\UserController::class, 'create'])->name('user.create');
 Route::post('/login', [Controllers\LoginController::class, 'authenticate'])->name('user.login');
+Route::get('/logout', [Controllers\UserController::class, 'logout'])->name('user.logout');
 
 Route::get('/dashboard', [Controllers\UserController::class, 'dashboard'])->name('user.dashboard');
 Route::resource('books', Controllers\BookController::class);

@@ -28,7 +28,7 @@
             </div>
             <input wire:model.live='search' type="text" id="table-search"
                 class="block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search for items">
+                placeholder="Cari Buku, Penulis, atau Penerbit">
         </div>
     </div>
     <table class="w-full text-sm text-left text-gray-500 border-2 shadow-md rtl:text-right dark:text-gray-400">
