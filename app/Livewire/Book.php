@@ -22,13 +22,15 @@ class Book extends Component
                 return $query->where('category_id', $this->category);
             })
             ->when($this->search, function ($query) {
-                return $query->where('title', 'like', '%' . $this->search . '%')
-                    ->orWhereHas('author', function ($query) {
-                        $query->where('name', 'like', '%' . $this->search . '%');
-                    })
-                    ->orWhereHas('publisher', function ($query) {
-                        $query->where('name', 'like', '%' . $this->search . '%');
-                    });
+                return $query->where(function ($query) {
+                    $query->where('title', 'like', '%' . $this->search . '%')
+                        ->orWhereHas('author', function ($query) {
+                            $query->where('name', 'like', '%' . $this->search . '%');
+                        })
+                        ->orWhereHas('publisher', function ($query) {
+                            $query->where('name', 'like', '%' . $this->search . '%');
+                        });
+                });
             })
             ->latest()
             ->paginate($this->paginate);

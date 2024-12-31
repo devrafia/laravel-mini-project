@@ -90,7 +90,6 @@ class BookController extends Controller
     public function recapCategory()
     {
         $categories = Category::withCount('books')->get();
-
         return view('books.recap-category', ['categories' => $categories]);
     }
 }
