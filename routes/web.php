@@ -16,5 +16,6 @@ Route::get('/logout', [Controllers\UserController::class, 'logout'])->name('user
 
 Route::get('/dashboard', [Controllers\UserController::class, 'dashboard'])->name('user.dashboard');
 Route::get('/books/category', [Controllers\BookController::class, 'recapCategory'])->name('books.category');
+Route::get('/books/list', [Controllers\BookController::class, 'list'])->name('books.list');
 Route::get('/books/publisher', [Controllers\BookController::class, 'recapPublisher'])->name('books.publisher');
 Route::resource('books', Controllers\BookController::class);

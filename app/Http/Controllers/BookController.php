@@ -98,4 +98,10 @@ class BookController extends Controller
         $publishers = Publisher::withCount('books')->get();
         return view('books.recap-publisher', ['publishers' => $publishers]);
     }
+
+    public function list()
+    {
+        $books = Book::latest()->paginate(9);
+        return view('books.list', ['books' => $books]);
+    }
 }

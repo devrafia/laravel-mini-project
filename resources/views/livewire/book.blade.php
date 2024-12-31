@@ -85,8 +85,13 @@
                         {{ $book->publisher->name }}
                     </td>
                     <td class="px-6 py-4">
-                        <img src="{{ asset('storage/' . $book->cover_image) }}" alt="{{ $book->title }}"
-                            class="object-cover w-20 h-20">
+                        @if ($book->cover_image)
+                            <img src="{{ asset('storage/' . $book->cover_image) }}" alt="{{ $book->title }}"
+                                class="object-cover w-20 h-20">
+                        @else
+                            <img src="https://dummyimage.com/600x800/000/fff&text=Belum+Ada+Cover"
+                                alt="{{ $book->title }}" class="object-cover w-20 h-20">
+                        @endif
                     </td>
                     <td class="px-6 py-4 w-max">
                         <a href="{{ route('books.edit', $book) }}"
