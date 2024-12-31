@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Models\Author;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,9 @@ class UserController extends Controller
 
         $validated = $request->all();
         User::create($validated);
-
+        Author::create([
+            'name' => $validated['name']
+        ]);
         return view('login', ['message' => 'Pendaftaran Berhasil']);
     }
 
