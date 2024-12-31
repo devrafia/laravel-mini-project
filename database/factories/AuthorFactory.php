@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +17,17 @@ class AuthorFactory extends Factory
      */
     public function definition(): array
     {
+        $name = $this->faker->name; // Menghasilkan nama acak untuk Author
+
+        User::create([
+            'name' => $name,
+            'email' => $this->faker->unique()->safeEmail,
+            'password' => bcrypt('password'),
+            'role' => 'penulis',
+        ]);
+
         return [
-            'name' => $this->faker->name,
+            'name' => $name,
         ];
     }
 }

@@ -23,9 +23,10 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::create([
-            'name' => 'Rafi Akmal',
-            'email' => 'rafiakmal@gmail.com',
-            'password' => Hash::make('rafiakmal')
+            'name' => 'Admin',
+            'email' => 'admin@example.com',
+            'password' => Hash::make('admin'),
+            'role' => 'admin'
         ]);
 
         $categories = [
@@ -40,7 +41,20 @@ class DatabaseSeeder extends Seeder
                 'name' => $category,
             ]);
         }
-        Author::factory()->count(5)->create();
+
+        $name = 'John';
+        User::create([
+            'name' => $name,
+            'email' => 'john@example.com',
+            'password' => Hash::make('password'),
+            'role' => 'penulis'
+        ]);
+
+        Author::create([
+            'name' => $name,
+        ]);
+
+        Author::factory()->count(4)->create();
         Publisher::factory()->count(5)->create();
 
         Book::factory(50)->create(); // Membuat 10 data buku
