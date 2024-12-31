@@ -1,5 +1,11 @@
 <x-layouts.app>
-    <x-slot name="title">Daftar Buku</x-slot>
+    <x-slot name="title">
+        @if (auth()->user()->isAdmin())
+            Daftar Buku
+        @else
+            Daftar Buku - {{ auth()->user()->name }}
+        @endif
+    </x-slot>
     <div class="mt-4">
         <div class="grid grid-cols-3 gap-y-4">
             @foreach ($books as $book)

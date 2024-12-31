@@ -101,7 +101,13 @@ class BookController extends Controller
 
     public function list()
     {
-        $books = Book::latest()->paginate(9);
+        if (auth()->user()->isAdmin()) {
+            $books = Book::latest()->paginate(9);
+        } else {
+            $books = Book::whereHas('author', function ($query) {
+                $query->where('name', auth()->user()->name);
+            })->latest()->paginate(9);
+        }
         return view('books.list', ['books' => $books]);
     }
 }

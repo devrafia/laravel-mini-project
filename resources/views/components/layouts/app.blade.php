@@ -80,7 +80,7 @@
             class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full bg-white border-r border-gray-200 pt-14 md:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
             aria-label="Sidenav" id="drawer-navigation">
             <div class="h-full px-3 py-5 overflow-y-auto bg-white dark:bg-gray-800">
-                @if (auth()->user()->role == 'admin')
+                @if (auth()->user()->isAdmin())
                     <ul class="pb-5 mb-5 space-y-2 border-b">
                         <li>
                             <a href="{{ route('books.index') }}"
