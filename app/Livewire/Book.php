@@ -24,7 +24,9 @@ class Book extends Component
             ->when($this->search, function ($query) {
                 return $query->where('title', 'like', '%' . $this->search . '%');
             })
+            ->latest()
             ->paginate($this->paginate);
+
         return view('livewire.book', [
             'books' => $books,
             'categories' => Category::get(),
@@ -32,6 +34,11 @@ class Book extends Component
     }
 
     public function updatedSearch()
+    {
+        $this->resetPage();
+    }
+
+    public function updatedCategory()
     {
         $this->resetPage();
     }

@@ -88,10 +88,10 @@
                         <img src="{{ asset('storage/' . $book->cover_image) }}" alt="{{ $book->title }}"
                             class="object-cover w-20 h-20">
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 w-max">
                         <a href="{{ route('books.edit', $book) }}"
-                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        <button class="delete-book" data-id="{{ $book->id }}">Hapus</button>
+                            class="font-medium text-center text-blue-600 rounded-md w-14 dark:text-blue-500 hover:underline">Edit</a>
+
                     </td>
                 </tr>
             @endforeach

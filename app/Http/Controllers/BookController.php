@@ -60,7 +60,10 @@ class BookController extends Controller
     public function update(BookRequest $request, Book $book)
     {
         if ($request->hasFile('cover_image')) {
-            Storage::disk('public')->delete($book->cover_image);
+            if ($book->cover_image) {
+
+                Storage::disk('public')->delete($book->cover_image);
+            }
             $file = $request->file('cover_image');
             $path = $file->store('images/cover', 'public');
         } else {
@@ -80,9 +83,7 @@ class BookController extends Controller
         if ($book->cover_image) {
             Storage::disk('public')->delete($book->cover_image);
         }
-        // Hapus data buku
         $book->delete();
-
         return response()->json(['message' => 'Buku berhasil dihapus!']);
     }
 }

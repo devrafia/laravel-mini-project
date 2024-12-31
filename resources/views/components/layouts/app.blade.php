@@ -250,33 +250,7 @@
         </main>
     </div>
     @livewireScripts
-    <script>
-        document.querySelectorAll('.delete-book').forEach(button => {
-            button.addEventListener('click', function() {
-                const bookId = this.getAttribute('data-id');
-                const confirmation = confirm('Apakah Anda yakin ingin menghapus buku ini?');
-                if (confirmation) {
-                    fetch(`/books/${bookId}`, {
-                            method: 'DELETE',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                            }
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            alert(data.message);
-                            // Hapus baris buku dari tabel
-                            this.closest('tr').remove();
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            alert('Terjadi kesalahan saat menghapus buku.');
-                        });
-                }
-            });
-        });
-    </script>
+
 </body>
 
 </html>

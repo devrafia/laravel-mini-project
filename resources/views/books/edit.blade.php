@@ -2,14 +2,13 @@
     <x-slot name="title">Edit Buku</x-slot>
     <div class="mt-4">
         <div class="relative overflow-x-auto sm:rounded-lg">
-            <form action={{ route('books.destroy', $book) }} method="post" class="block w-1/3 mt-2">
-                @method('DELETE')
-                @csrf
-                <button type="submit" class="block p-2 ml-auto text-white bg-red-500 rounded-md" type="submit">Hapus
-                    Buku</button>
-            </form>
-            <form class="max-w-sm" action="{{ route('books.update', $book) }}" method="POST"
-                enctype="multipart/form-data" novalidate>
+            <div class="w-1/3">
+                <button
+                    class="block p-2 mt-2 ml-auto text-sm text-center text-white bg-red-500 rounded-md delete-book hover:bg-red-600 active:bg-red-800"
+                    data-id="{{ $book->id }}">Hapus Buku</button>
+            </div>
+            <form class="max-w-sm" action="{{ route('books.update', $book) }}" method="POST" enctype="multipart/form-data"
+                novalidate>
                 @csrf
                 @method('PUT')
                 <div class="mb-5">
@@ -80,4 +79,29 @@
         </div>
 
     </div>
+    <script>
+        document.querySelector('.delete-book').addEventListener('click', function() {
+            const bookId = this.getAttribute('data-id');
+            const confirmation = confirm('Apakah Anda yakin ingin menghapus buku ini?');
+            console.log(bookId);
+            if (confirmation) {
+                fetch(`/books/${bookId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        window.location.href = '/books';
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Terjadi kesalahan saat menghapus buku.');
+                    });
+            }
+        });
+    </script>
 </x-layouts.app>
