@@ -86,4 +86,11 @@ class BookController extends Controller
         $book->delete();
         return response()->json(['message' => 'Buku berhasil dihapus!']);
     }
+
+    public function recapCategory()
+    {
+        $categories = Category::withCount('books')->get();
+
+        return view('books.recap-category', ['categories' => $categories]);
+    }
 }

@@ -21,9 +21,9 @@ class BookFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(3), // Judul buku
-            'author_id' => Author::factory(), // Membuat data author jika belum ada
-            'category_id' => Category::factory(), // Membuat data category jika belum ada
-            'publisher_id' => Publisher::factory(), // Membuat data publisher jika belum ada
+            'author_id' => Author::inRandomOrder()->first()->id, // Membuat data author jika belum ada
+            'category_id' => Category::inRandomOrder()->first()->id, // Membuat data category jika belum ada
+            'publisher_id' => Publisher::inRandomOrder()->first()->id, // Membuat data publisher jika belum ada
         ];
     }
 }

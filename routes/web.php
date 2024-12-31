@@ -15,4 +15,5 @@ Route::post('/login', [Controllers\LoginController::class, 'authenticate'])->nam
 Route::get('/logout', [Controllers\UserController::class, 'logout'])->name('user.logout');
 
 Route::get('/dashboard', [Controllers\UserController::class, 'dashboard'])->name('user.dashboard');
+Route::get('/books/category', [Controllers\BookController::class, 'recapCategory'])->name('books.category');
 Route::resource('books', Controllers\BookController::class);
